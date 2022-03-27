@@ -52,8 +52,7 @@ plt.clf()
 # %%
 df_logit = sns.load_dataset("exercise")
 df_logit = df_logit.assign(
-    fat=(df_logit.diet == "no fat").astype(int),
-    pulse=df_logit.pulse.astype(float)
+    fat=(df_logit.diet == "no fat").astype(int), pulse=df_logit.pulse.astype(float)
 )
 # %%
 scatter_logit = sns.relplot(
@@ -75,7 +74,7 @@ model_logit = smf.logit(formula, data=df_logit)
 results_logit = model_logit.fit()
 results_logit.summary()
 # %%
-subject = pd.DataFrame([[120, "rest", "15 min"]], columns=['pulse', 'kind', 'time'])
+subject = pd.DataFrame([[120, "rest", "15 min"]], columns=["pulse", "kind", "time"])
 y = results_logit.predict(subject)
 print(f"The chances of this person being on a no fat diet are {y[0]}")
 # %%
